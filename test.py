@@ -1,2 +1,1 @@
 print ("helloWorld")
-print ("test")

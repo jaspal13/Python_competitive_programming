@@ -1,5 +1,5 @@
 from threading import Lock
-
+import threading
 class FooBar:
     def __init__(self, n):
         self.n = n
@@ -21,3 +21,15 @@ class FooBar:
             # printBar() outputs "bar". Do not change or remove this line.
             printBar()
             self.fooLock.release()
+
+f=FooBar(5)
+def printFoo():
+    print ("foo")
+
+def printBar():
+    print ("bar")
+thread1 = threading.Thread(target = f.bar, args = (printBar))
+
+thread2 = threading.Thread(target = f.foo, args = (printFoo))
+thread1.start()
+thread2.start()
